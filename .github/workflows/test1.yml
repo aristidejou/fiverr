@@ -1,13 +1,11 @@
-name: learn-github-actions
+name: learn-github-actions test1
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
     steps:
+      # This step checks out a copy of your repository.
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      # This step references the directory that contains the action.
+      - uses: ./.github/actions/hello-world-action
